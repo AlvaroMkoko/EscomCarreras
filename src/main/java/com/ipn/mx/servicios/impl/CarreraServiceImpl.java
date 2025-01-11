@@ -4,6 +4,7 @@ import com.ipn.mx.modelo.entidades.Carrera;
 import com.ipn.mx.modelo.repositorio.CarreraRepositorio;
 import com.ipn.mx.servicios.CarreraService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,7 @@ public class CarreraServiceImpl implements CarreraService {
     @Override
     @Transactional(readOnly = true)
     public List<Carrera> findAll(){
-        return (List<Carrera>) carreraRepositorio.findAll();
+        return (List<Carrera>) carreraRepositorio.findAll(Sort.by(Sort.Direction.ASC, "idCarrera"));
     }
 
     @Override

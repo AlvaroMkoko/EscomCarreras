@@ -5,6 +5,7 @@ import com.ipn.mx.modelo.entidades.Carrera;
 import com.ipn.mx.modelo.repositorio.AlumnoRepositorio;
 import com.ipn.mx.servicios.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +19,9 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Alumno> findAll(){ return (List<Alumno>) alumnoRepositorio.findAll();}
+    public List<Alumno> findAll(){
+        return (List<Alumno>) alumnoRepositorio.findAll(Sort.by(Sort.Direction.ASC, "idAlumno"));
+    }
 
     @Override
     @Transactional(readOnly = true)
