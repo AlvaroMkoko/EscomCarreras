@@ -1,0 +1,12 @@
+com\ipn\mx\controlador\CarreraController.class
+com\ipn\mx\servicios\CarreraService.class
+com\ipn\mx\servicios\impl\AlumnoServiceImpl.class
+com\ipn\mx\EscomCarrerasApplication.class
+com\ipn\mx\controlador\AlumnoController.class
+com\ipn\mx\modelo\repositorio\AlumnoRepositorio.class
+com\ipn\mx\modelo\entidades\Alumno.class
+com\ipn\mx\modelo\entidades\Carrera.class
+com\ipn\mx\servicios\impl\CarreraServiceImpl.class
+com\ipn\mx\servicios\AlumnoService.class
+com\ipn\mx\modelo\repositorio\CarreraRepositorio.class
+com\ipn\mx\modelo\entidades\Carrera$CarreraBuilder.class
