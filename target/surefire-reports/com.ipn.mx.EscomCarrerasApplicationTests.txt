@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.ipn.mx.EscomCarrerasApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.95 s -- in com.ipn.mx.EscomCarrerasApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.90 s -- in com.ipn.mx.EscomCarrerasApplicationTests
