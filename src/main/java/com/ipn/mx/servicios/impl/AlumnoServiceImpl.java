@@ -1,7 +1,6 @@
 package com.ipn.mx.servicios.impl;
 
 import com.ipn.mx.modelo.entidades.Alumno;
-import com.ipn.mx.modelo.entidades.Carrera;
 import com.ipn.mx.modelo.repositorio.AlumnoRepositorio;
 import com.ipn.mx.servicios.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     public Alumno findById(Long id) {
         return alumnoRepositorio.findById(id).orElse(null);
     }
+
     @Override
     @Transactional
     public Alumno save(Alumno alumno) {

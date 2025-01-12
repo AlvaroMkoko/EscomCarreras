@@ -52,6 +52,7 @@ public class AlumnoController {
         a.setMaternoAlumno(alumno.getMaternoAlumno());
         a.setFechaNacimiento(alumno.getFechaNacimiento());
         a.setEmailAlumno(alumno.getEmailAlumno());
+        a.setIdCarrera(alumno.getIdCarrera());
         return serviceAlumno.save(a);
     }
 }

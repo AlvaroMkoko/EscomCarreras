@@ -30,10 +30,6 @@ public class Alumno implements Serializable{
     @Column(name = "emailAlumno", length = 100, nullable =  false)
     private String emailAlumno;
 
-    //Para hacer cosas
-    //@Column("name = " nullable = false)
-    //private int ;
-
     @ManyToOne
     @JoinColumn(name = "idCarrera", nullable = false)
     @JsonBackReference
