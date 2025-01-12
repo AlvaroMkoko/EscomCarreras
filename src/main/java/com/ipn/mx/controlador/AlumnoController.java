@@ -11,25 +11,25 @@ import java.util.List;
 
 @CrossOrigin(origins = {"*"})
 @RestController
-@RequestMapping("/apiAlumno")
+@RequestMapping("/apiAlumnos")
 public class AlumnoController {
     @Autowired
     AlumnoService serviceAlumno;
 
     // En algún punto dirá localhost:8080/apialumno/alumnos
     // Para llegar a los verbos es la última
-    @GetMapping("/alumnos")
+    @GetMapping("/alumno")
     public List<Alumno> readAll() {
         return serviceAlumno.findAll();
     }
 
-    @GetMapping("/alumnos/{id}")
+    @GetMapping("/alumno/{id}")
     // Para http @
     public Alumno read(@PathVariable Long id) {
         return serviceAlumno.findById(id);
     }
 
-    @PostMapping("/alumnos")
+    @PostMapping("/alumno")
     //Created 201 Http
     @ResponseStatus(HttpStatus.CREATED)
     // Lo pasaremos con un json
@@ -43,7 +43,7 @@ public class AlumnoController {
         serviceAlumno.delete(id);
     }
 
-    @PutMapping("/alumnos/{id}")
+    @PutMapping("/alumno/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Alumno update(@PathVariable Long id, @RequestBody Alumno alumno) {
         Alumno a = serviceAlumno.findById(id);
