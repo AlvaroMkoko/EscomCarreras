@@ -2,12 +2,17 @@ package com.ipn.mx.controlador;
 
 
 import com.ipn.mx.modelo.entidades.Alumno;
+import com.ipn.mx.modelo.entidades.Carrera;
 import com.ipn.mx.servicios.AlumnoService;
+import com.ipn.mx.servicios.CarreraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = {"*"})
 @RestController
@@ -15,6 +20,7 @@ import java.util.List;
 public class AlumnoController {
     @Autowired
     AlumnoService serviceAlumno;
+    CarreraService serviceCarrera;
 
     // En algún punto dirá localhost:8080/apialumno/alumnos
     // Para llegar a los verbos es la última
@@ -45,14 +51,29 @@ public class AlumnoController {
 
     @PutMapping("/alumno/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Alumno update(@PathVariable Long id, @RequestBody Alumno alumno) {
+    public Alumno update(@PathVariable Long id, @RequestBody Map<String, Object> payload) {
         Alumno a = serviceAlumno.findById(id);
-        a.setNombreAlumno(alumno.getNombreAlumno());
-        a.setPaternoAlumno(alumno.getPaternoAlumno());
-        a.setMaternoAlumno(alumno.getMaternoAlumno());
-        a.setFechaNacimiento(alumno.getFechaNacimiento());
-        a.setEmailAlumno(alumno.getEmailAlumno());
-        a.setIdCarrera(alumno.getIdCarrera());
+        if (a == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "El alumno no existe");
+        }
+
+        // Actualizar los campos del alumno
+        a.setNombreAlumno((String) payload.get("nombreAlumno"));
+        a.setPaternoAlumno((String) payload.get("paternoAlumno"));
+        a.setMaternoAlumno((String) payload.get("maternoAlumno"));
+        a.setFechaNacimiento(Date.valueOf((String) payload.get("fechaNacimiento")));
+        a.setEmailAlumno((String) payload.get("emailAlumno"));
+
+        // Cargar la carrera gestionada
+        Long idCarrera = ((Number) payload.get("idCarrera")).longValue();
+        Carrera carrera = serviceCarrera.findById(idCarrera);
+        if (carrera == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "La carrera no existe");
+        }
+        a.setIdCarrera(carrera);
+
+        // Guardar los cambios
         return serviceAlumno.save(a);
     }
+
 }
