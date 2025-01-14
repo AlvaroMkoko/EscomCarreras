@@ -20,6 +20,8 @@ import java.util.Map;
 public class AlumnoController {
     @Autowired
     AlumnoService serviceAlumno;
+
+    @Autowired
     CarreraService serviceCarrera;
 
     // En algún punto dirá localhost:8080/apialumno/alumnos
